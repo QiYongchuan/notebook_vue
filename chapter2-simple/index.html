@@ -1,0 +1,62 @@
+<html>
+
+<head>
+  <title>Notebook</title>
+  <!-- Icons & Stylesheets -->
+  <link href="./icon.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- 引入库e -->
+  <!-- 引入momentjs 对日期进行格式化 -->
+  <script src="./lib/moment.js"></script>
+  <!-- 引入vue 2 -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> -->
+  <script src="./lib/vue.js"></script>
+  <!-- 添加Marked库： -->
+  <script src="./lib/mark.js"></script>
+  <!-- <script src="https://unpkg.com/marked"></script> -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script> -->
+
+
+  <!-- Notebook app -->
+  <div id="notebook">
+
+    <!-- 侧边栏 -->
+    <aside class="side-bar">
+      <div class="toolbar">
+        <button @click="addNote" v-bind:title="tellmeNotesNum()">
+          <i class="material-icons">add</i> Add note
+        </button>
+      </div>
+      <div class="notes">
+        <div class="note" v-for="note of notes" @click="selectNote(note)">
+          {{note.title}}</div>
+      </div>
+    </aside>
+
+
+    <!-- 主面板  -->
+    <section class="main">
+      <textarea name="" id="" v-model="content"></textarea>
+    </section>
+
+    <!-- Preview pane -->
+    <template v-if="selectedNote">
+      <aside class="preview" v-html="noteProview">
+        <!-- {{noteProview}} -->
+      </aside>
+
+    </template>
+
+    <aside>{{selectedNote}}11</aside>
+  </div>
+
+  <!-- Some JavaScript -->
+  <script src="script.js"></script>
+
+</body>
+
+
+</html>
